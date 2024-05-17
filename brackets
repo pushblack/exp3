@@ -1,0 +1,24 @@
+open_list = ["[", "{", "("]
+close_list = ["]", "}", ")"]
+
+def check(mystr):
+    stack = []
+    for i in mystr:
+        if i in open_list:
+            stack.append(i)
+        elif i in close_list:
+            if len(stack) == 0:
+                return "Unbalanced"
+            else:
+                por = close_list.index(i)
+                if open_list[por] == stack[-1]:
+                    stack.pop()
+                else:
+                    return "Unbalanced"
+    if len(stack) == 0:
+        return "Balanced"
+    else:
+        return "Unbalanced"
+
+string = input("Enter the brackets: ")
+print(string, " is: ", check(string))
